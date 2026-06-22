@@ -1,26 +1,102 @@
 @import "tailwindcss";
 
+/* ── Design tokens — single source of truth (see CLAUDE.md) ───────────────
+   Dark-first. Never pure #000 or #FFF. ~90% ink/paper/slate, ~10% mint. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds — 3 elevation levels + hover */
+  --void: #070c0a;
+  --ink: #0d1411;
+  --surface: #121c17;
+  --hover: #16241d;
+
+  /* Hairlines */
+  --line: #1e2d26;
+
+  /* Text */
+  --paper: #eaf2ec;
+  --slate: #8da197;
+  --muted: #5e726a;
+
+  /* Mint accent — used sparingly so it stays electric */
+  --mint: #19d98c;
+  --deep-mint: #0e8a63;
+  --mint-glow: rgba(25, 217, 140, 0.14);
+
+  /* RESERVED — do not use unless explicitly asked */
+  --amber: #f2b559;
+
+  /* Motion — precise, machined "build-in" easing (never bouncy) */
+  --ease-build: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Expose tokens + fonts to Tailwind (v4) so utilities like bg-void,
+   text-paper, text-mint, border-line, font-sans/font-mono resolve.
+   Components use these utilities — never hardcoded hex. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-void: var(--void);
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-hover: var(--hover);
+  --color-line: var(--line);
+  --color-paper: var(--paper);
+  --color-slate: var(--slate);
+  --color-muted: var(--muted);
+  --color-mint: var(--mint);
+  --color-deep-mint: var(--deep-mint);
+  --color-amber: var(--amber);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-general-sans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--void);
+  color: var(--paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Motion identity — global keyframes (one coherent vocabulary) ─────────
+   "build-in" (assemble on scroll) and "live pulse" (mint = alive). */
+@keyframes buildIn {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes panelIn {
+  0% { opacity: 0; transform: translateY(22px) scale(0.985); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes statusIn {
+  0% { opacity: 0; transform: translateX(8px); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes blink {
+  0%, 48% { opacity: 1; }
+  49%, 100% { opacity: 0; }
+}
+@keyframes livePulse {
+  0% { box-shadow: 0 0 0 0 var(--mint); }
+  70% { box-shadow: 0 0 0 7px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+@keyframes nodePulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--mint), transparent 28%); }
+  100% { box-shadow: 0 0 0 12px transparent; }
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Always honor reduced-motion (hard accessibility rule). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
