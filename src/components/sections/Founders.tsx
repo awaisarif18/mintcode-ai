@@ -55,6 +55,8 @@ export default function Founders() {
                   </p>
                   <a
                     href={founder.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={`${founder.name} on LinkedIn`}
                     className="mt-auto inline-flex items-center gap-2 rounded pt-5 pb-1 text-[14px] font-medium text-mint no-underline outline-none hover:underline focus-visible:ring-2 focus-visible:ring-mint/60"
                   >
