@@ -17,3 +17,5 @@ export const contactEmail = "m.awaisarif17@gmail.com";
 
 // Placeholder social-share image (1200×630). Replace public/og.png with the real asset.
 export const ogImage = "/og.png";
+
+export const calendlyLink = "https://calendly.com/mawaisarif/dicovery-call"; 
