@@ -66,7 +66,7 @@ Motion identity (keep consistent everywhere):
 - [✅] 5. Process — 7-step timeline with draw-on mint line
 - [✅] 6. Featured Work — 2 real studies (TradeSync Pro, Chronic Pain Free); layout grows to 4
 - [✅] 7. Founders — 3 cards (photo slot, name, role, one line, LinkedIn)
-- [~] 8. Contact + Footer — wired ContactForm (consent-gated, honeypot) live via interim wrapper at #call; full section copy/layout from design-reference still TODO
+- [✅] 8. Contact + Footer — designed two-column section + footer, wired form preserved (POST, honeypot, consent gate, states)
 - [✅] Case-study detail template — `/work/[slug]`, data-driven
 - [✅] /work index page
 - [✅] Legal/utility — `/privacy`, `/terms`, `not-found.tsx`

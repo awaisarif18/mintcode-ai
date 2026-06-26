@@ -1,20 +1,22 @@
 "use client";
 
-// Contact form — posts to /api/contact with success/error states. Submit stays
-// disabled until the GDPR consent box is checked. Includes a hidden honeypot
-// ("website") that real users never see; bots that fill it are dropped server-side.
-//
-// NOTE: This is the wired form only — the full Contact section #8 (final copy,
-// layout and surrounding design from design-reference) is not built yet.
+// Contact form — the elevated card on the right of the Contact section. Posts to
+// /api/contact with idle/submitting/success/error states; submit stays disabled
+// until the GDPR consent box is checked; a hidden honeypot ("website") drops bots
+// server-side. This file owns the card styling so both the form and the success
+// panel render inside the same designed card (see design-reference/hero.html).
 
 import { useState } from "react";
 import Link from "next/link";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+const cardBase =
+  "rounded-[16px] border border-line bg-surface p-[clamp(22px,2.6vw,34px)] [box-shadow:0_36px_90px_-44px_color-mix(in_oklab,var(--mint),transparent_50%)]";
+const labelBase =
+  "font-mono text-[10.5px] tracking-[0.12em] text-muted uppercase";
 const inputBase =
-  "w-full rounded-[10px] border border-line bg-void px-[14px] py-[11px] text-[15px] text-paper placeholder:text-muted outline-none transition-colors focus-visible:border-[color-mix(in_oklab,var(--mint),transparent_45%)] focus-visible:ring-2 focus-visible:ring-mint/40";
-const labelBase = "mb-2 block text-[13px] font-medium text-slate";
+  "w-full rounded-[10px] border border-line bg-void px-[13px] py-3 text-[15px] text-paper placeholder:text-muted outline-none transition-colors focus-visible:border-[color-mix(in_oklab,var(--mint),transparent_45%)] focus-visible:ring-2 focus-visible:ring-mint/40";
 
 export default function ContactForm() {
   const [consent, setConsent] = useState(false);
@@ -35,6 +37,7 @@ export default function ContactForm() {
       email: String(data.get("email") ?? ""),
       company: String(data.get("company") ?? ""),
       message: String(data.get("message") ?? ""),
+      budget: String(data.get("budget") ?? ""),
       consent,
       website: String(data.get("website") ?? ""), // honeypot
     };
@@ -66,40 +69,42 @@ export default function ContactForm() {
     return (
       <div
         role="status"
-        className="rounded-[14px] border border-line bg-surface p-7 text-center"
+        className={`flex min-h-[320px] flex-col items-start justify-center gap-4 ${cardBase}`}
       >
-        <p className="font-mono text-[12.5px] tracking-[0.16em] text-mint">
-          // MESSAGE SENT
+        <span
+          aria-hidden
+          className="inline-flex h-[46px] w-[46px] items-center justify-center rounded-full text-[22px] text-mint [animation:nodePulse_1.1s_ease-out_1] [background:color-mix(in_oklab,var(--mint),transparent_80%)]"
+        >
+          ✓
+        </span>
+        <h3 className="text-[24px] font-semibold tracking-[-0.02em] text-paper">
+          Message sent.
+        </h3>
+        <p className="max-w-[360px] text-[15.5px] leading-[1.6] text-slate">
+          Thanks — a founder will read this and get back to you directly. No
+          account managers in between.
         </p>
-        <p className="mt-3 text-[16px] leading-[1.6] text-slate">
-          Thanks — we&rsquo;ve got your message and will get back to you shortly.
-        </p>
+        <div className="inline-flex items-center gap-[9px] font-mono text-[12.5px] text-muted">
+          <span className="text-mint">›</span>you ↔ senior engineer
+        </div>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit} noValidate className={`flex flex-col gap-4 ${cardBase}`}>
       {/* Honeypot — visually hidden, off the tab order, ignored by humans. */}
       <div aria-hidden className="absolute h-0 w-0 overflow-hidden">
         <label>
           Leave this field empty
-          <input
-            type="text"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-          />
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 min-[560px]:grid-cols-2">
-        <div>
-          <label htmlFor="name" className={labelBase}>
-            Name
-          </label>
+      <div className="grid grid-cols-1 gap-[14px] min-[560px]:grid-cols-2">
+        <label className="flex flex-col gap-[7px]">
+          <span className={labelBase}>Name</span>
           <input
-            id="name"
             name="name"
             type="text"
             required
@@ -107,13 +112,10 @@ export default function ContactForm() {
             placeholder="Your name"
             className={inputBase}
           />
-        </div>
-        <div>
-          <label htmlFor="email" className={labelBase}>
-            Email
-          </label>
+        </label>
+        <label className="flex flex-col gap-[7px]">
+          <span className={labelBase}>Email</span>
           <input
-            id="email"
             name="email"
             type="email"
             required
@@ -121,62 +123,68 @@ export default function ContactForm() {
             placeholder="you@company.com"
             className={inputBase}
           />
-        </div>
+        </label>
       </div>
 
-      <div>
-        <label htmlFor="company" className={labelBase}>
-          Company <span className="text-muted">(optional)</span>
-        </label>
+      <label className="flex flex-col gap-[7px]">
+        <span className={labelBase}>Company</span>
         <input
-          id="company"
           name="company"
           type="text"
           autoComplete="organization"
           placeholder="Company or project"
           className={inputBase}
         />
-      </div>
+      </label>
 
-      <div>
-        <label htmlFor="message" className={labelBase}>
-          Message
-        </label>
+      <label className="flex flex-col gap-[7px]">
+        <span className={labelBase}>What are you building?</span>
         <textarea
-          id="message"
           name="message"
           required
-          rows={5}
-          placeholder="What are you building?"
-          className={`${inputBase} resize-y`}
+          rows={3}
+          placeholder="A sentence or two about the product."
+          className={`${inputBase} resize-y leading-[1.5]`}
         />
-      </div>
+      </label>
 
-      <label className="flex items-start gap-3 text-[14px] leading-[1.55] text-slate">
+      <label className="flex flex-col gap-[7px]">
+        <span className={labelBase}>
+          Budget / Timeline <span className="text-line">(optional)</span>
+        </span>
+        <input
+          name="budget"
+          type="text"
+          placeholder="e.g. ~$30k · launch in Q4"
+          className={inputBase}
+        />
+      </label>
+
+      <label className="mt-[2px] flex cursor-pointer items-start gap-[11px] text-[13px] leading-[1.5] text-slate">
         <input
           type="checkbox"
           name="consent"
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
-          className="mt-[3px] h-[18px] w-[18px] flex-none accent-mint"
+          className="mt-[3px] h-4 w-4 flex-none accent-mint"
         />
         <span>
-          I agree that MintCode may store and use the details above to respond to
-          my enquiry, as described in the{" "}
+          I consent to MintCode storing the details I&rsquo;ve submitted so they
+          can respond to my enquiry, in line with their{" "}
           <Link
             href="/privacy"
             className="text-mint underline-offset-4 hover:underline"
           >
             Privacy Policy
-          </Link>
-          .
+          </Link>{" "}
+          (GDPR).
         </span>
       </label>
 
       {status === "error" && (
         <p
           role="alert"
-          className="rounded-[10px] border border-line bg-surface px-[14px] py-[11px] text-[14px] text-paper"
+          className="rounded-[10px] border border-line bg-void px-[13px] py-3 text-[14px] text-paper"
         >
           {error}
         </p>
@@ -185,9 +193,9 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={!consent || status === "submitting"}
-        className="inline-flex w-fit items-center rounded-[11px] bg-mint px-[24px] py-[13px] text-[15.5px] font-semibold tracking-[-0.01em] text-void outline-none transition-[box-shadow,transform,opacity] duration-300 hover:-translate-y-0.5 hover:[box-shadow:0_14px_40px_-12px_color-mix(in_oklab,var(--mint),transparent_40%)] focus-visible:ring-2 focus-visible:ring-mint/60 disabled:cursor-not-allowed disabled:opacity-45 disabled:hover:translate-y-0 disabled:hover:shadow-none"
+        className="mt-[6px] w-full rounded-[11px] bg-mint px-[22px] py-[15px] text-[16px] font-semibold tracking-[-0.01em] text-void outline-none transition-[box-shadow,transform,background,opacity] duration-300 hover:-translate-y-0.5 hover:[box-shadow:0_14px_40px_-12px_color-mix(in_oklab,var(--mint),transparent_42%)] active:translate-y-0 active:bg-deep-mint focus-visible:ring-2 focus-visible:ring-mint/60 disabled:cursor-not-allowed disabled:opacity-45 disabled:hover:translate-y-0 disabled:hover:shadow-none"
       >
-        {status === "submitting" ? "Sending…" : "Send message"}
+        {status === "submitting" ? "Sending…" : "Book a Discovery Call"}
       </button>
     </form>
   );

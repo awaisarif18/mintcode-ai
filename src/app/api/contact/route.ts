@@ -12,6 +12,7 @@ type ContactPayload = {
   email?: string;
   company?: string;
   message?: string;
+  budget?: string;
   consent?: boolean;
   // Hidden honeypot — must stay empty for a real human. Bots fill it.
   website?: string;
@@ -39,6 +40,7 @@ export async function POST(request: Request) {
   const email = body.email?.trim() ?? "";
   const company = body.company?.trim() ?? "";
   const message = body.message?.trim() ?? "";
+  const budget = body.budget?.trim() ?? "";
 
   const errors: Record<string, string> = {};
   if (!name) errors.name = "Please enter your name.";
@@ -69,6 +71,7 @@ export async function POST(request: Request) {
     `Name: ${name}`,
     `Email: ${email}`,
     company ? `Company: ${company}` : null,
+    budget ? `Budget / Timeline: ${budget}` : null,
     "",
     message,
   ]

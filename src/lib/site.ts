@@ -12,5 +12,8 @@ export const siteDescription =
 // REVIEW: confirm the official company LinkedIn URL before launch.
 export const companyLinkedIn = "https://www.linkedin.com/company/mintcode";
 
+// REVIEW: confirm the real contact email before launch.
+export const contactEmail = "hello@mintcode.dev";
+
 // Placeholder social-share image (1200×630). Replace public/og.png with the real asset.
 export const ogImage = "/og.png";
