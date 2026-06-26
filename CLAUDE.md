@@ -64,7 +64,7 @@ Motion identity (keep consistent everywhere):
 - [✅] 3. What We Build — 6 service cards
 - [✅] 4. Why MintCode — 6 cards, "Direct founder & engineer access" first & emphasized
 - [✅] 5. Process — 7-step timeline with draw-on mint line
-- [ ] 6. Featured Work — 2 real studies (TradeSync Pro, Chronic Pain Free); layout grows to 4
+- [✅] 6. Featured Work — 2 real studies (TradeSync Pro, Chronic Pain Free); layout grows to 4
 - [ ] 7. Founders — 3 cards (photo slot, name, role, one line, LinkedIn)
 - [ ] 8. Contact + Footer — form, email, LinkedIn, GDPR checkbox; footer with no "Inc"
 - [ ] Case-study detail template — `/work/[slug]`, data-driven
