@@ -9,10 +9,13 @@ import CaseStudyCard from "@/components/ui/CaseStudyCard";
 import Footer from "@/components/layout/Footer";
 import { caseStudies } from "@/content/caseStudies";
 
+const workDescription =
+  "Real products, in production — built directly with the senior engineers who shipped them.";
+
 export const metadata: Metadata = {
-  title: "Work — MintCode",
-  description:
-    "Real products, in production — built directly with the senior engineers who shipped them.",
+  title: "Work",
+  description: workDescription,
+  openGraph: { title: "Work — MintCode", description: workDescription },
 };
 
 const EASE = "cubic-bezier(0.16,1,0.3,1)";

@@ -3,6 +3,13 @@ import localFont from "next/font/local";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/layout/Nav";
+import {
+  siteUrl,
+  siteName,
+  siteDescription,
+  companyLinkedIn,
+  ogImage,
+} from "@/lib/site";
 
 const generalSans = localFont({
   variable: "--font-general-sans",
@@ -22,10 +29,43 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const defaultTitle =
+  "MintCode — Work directly with the engineers building your product";
+
 export const metadata: Metadata = {
-  title: "MintCode — Work directly with the engineers building your product",
-  description:
-    "MintCode is a senior-led product engineering studio. We help startups and businesses design, build and scale SaaS platforms, AI-powered applications and custom software — with no middlemen and no handoffs.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: defaultTitle,
+    template: "%s — MintCode",
+  },
+  description: siteDescription,
+  openGraph: {
+    type: "website",
+    siteName,
+    url: siteUrl,
+    title: defaultTitle,
+    description: siteDescription,
+    images: [
+      { url: ogImage, width: 1200, height: 630, alt: "MintCode" },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: siteDescription,
+    images: [ogImage],
+  },
+};
+
+// Organization schema (JSON-LD) — factual only.
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteName,
+  url: siteUrl,
+  logo: `${siteUrl}${ogImage}`,
+  description: siteDescription,
+  sameAs: [companyLinkedIn],
 };
 
 export default function RootLayout({
@@ -39,6 +79,12 @@ export default function RootLayout({
       className={`${generalSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
         <Nav />
         {children}
       </body>

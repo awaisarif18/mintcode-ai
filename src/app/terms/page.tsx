@@ -9,7 +9,7 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — MintCode",
+  title: "Terms of Service",
   description:
     "The terms governing use of the MintCode website and initial enquiries.",
 };

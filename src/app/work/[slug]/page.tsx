@@ -31,8 +31,12 @@ export async function generateMetadata({
   const study = publishedStudies.find((s) => s.slug === slug);
   if (!study) return {};
   return {
-    title: `${study.name} — MintCode`,
+    title: study.name,
     description: study.descriptor,
+    openGraph: {
+      title: `${study.name} — MintCode`,
+      description: study.descriptor,
+    },
   };
 }
 

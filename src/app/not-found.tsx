@@ -7,7 +7,7 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Page not found — MintCode",
+  title: "Page not found",
 };
 
 export default function NotFound() {

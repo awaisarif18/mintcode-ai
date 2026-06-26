@@ -9,7 +9,7 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — MintCode",
+  title: "Privacy Policy",
   description:
     "How MintCode collects, uses and protects personal data submitted through our contact form.",
 };

@@ -66,12 +66,12 @@ Motion identity (keep consistent everywhere):
 - [✅] 5. Process — 7-step timeline with draw-on mint line
 - [✅] 6. Featured Work — 2 real studies (TradeSync Pro, Chronic Pain Free); layout grows to 4
 - [✅] 7. Founders — 3 cards (photo slot, name, role, one line, LinkedIn)
-- [ ] 8. Contact + Footer — form, email, LinkedIn, GDPR checkbox; footer with no "Inc"
+- [~] 8. Contact + Footer — wired ContactForm (consent-gated, honeypot) live via interim wrapper at #call; full section copy/layout from design-reference still TODO
 - [✅] Case-study detail template — `/work/[slug]`, data-driven
 - [✅] /work index page
 - [✅] Legal/utility — `/privacy`, `/terms`, `not-found.tsx`
-- [ ] Form handler — `api/contact/route.ts` (Resend or Formspree)
-- [ ] SEO baseline — metadata, OG image, sitemap, Organization schema
+- [✅] Form handler — `api/contact/route.ts` (Resend; honeypot + consent validation)
+- [✅] SEO baseline — metadata (template + OG/Twitter), sitemap, robots, Organization JSON-LD; placeholder public/og.png
 
 # src/lib not created; Hero uses inline buildIn delays, not a shared hook
 
