@@ -20,6 +20,7 @@ export const founders: Founder[] = [
     name: "Muhammad Awais Arif",
     role: "CEO & Founder",
     initials: "MA",
+    photo: "/awais.png",
     bio: "Full-stack engineer (Next.js, NestJS, .NET, Python); shipped a real-time trading platform and multiple production apps.",
     linkedin: "https://www.linkedin.com/in/muhammadawaisarif/",
   },
