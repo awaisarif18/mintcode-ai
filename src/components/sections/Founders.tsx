@@ -5,6 +5,7 @@
 // #founders section of design-reference/hero.html.
 // Guardrail: exactly these three founders, no invented URLs (see founders.ts).
 
+import Image from "next/image";
 import Eyebrow from "@/components/ui/Eyebrow";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { founders } from "@/content/founders";
@@ -27,7 +28,7 @@ export default function Founders() {
           {founders.map((founder) => (
             <RevealOnScroll key={founder.name} className="flex">
               <article className="flex flex-[1_1_auto] min-w-0 flex-col rounded-[16px] border border-line bg-surface p-4 transition-[border-color,background,box-shadow,transform] duration-[450ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[4px] hover:bg-hover hover:border-[color-mix(in_oklab,var(--mint),transparent_56%)] hover:[box-shadow:0_26px_60px_-34px_color-mix(in_oklab,var(--mint),transparent_52%)]">
-                {/* Photo slot — placeholder until a real photo is supplied */}
+                {/* Photo slot — real headshot if supplied, else initials placeholder */}
                 <div
                   className="relative flex aspect-[4/5] items-center justify-center overflow-hidden rounded-[12px] border border-line"
                   style={{
@@ -35,12 +36,24 @@ export default function Founders() {
                       "linear-gradient(160deg, var(--hover), var(--ink))",
                   }}
                 >
-                  <span className="text-[62px] font-semibold tracking-[-0.02em] text-line">
-                    {founder.initials}
-                  </span>
-                  <span className="absolute bottom-3 left-[13px] font-mono text-[11px] tracking-[0.08em] text-muted">
-                    // real photo
-                  </span>
+                  {founder.photo ? (
+                    <Image
+                      src={founder.photo}
+                      alt={`${founder.name}, ${founder.role}`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover object-top"
+                    />
+                  ) : (
+                    <>
+                      <span className="text-[62px] font-semibold tracking-[-0.02em] text-line">
+                        {founder.initials}
+                      </span>
+                      <span className="absolute bottom-3 left-[13px] font-mono text-[11px] tracking-[0.08em] text-muted">
+                        // real photo
+                      </span>
+                    </>
+                  )}
                 </div>
 
                 <div className="flex flex-1 flex-col px-[10px] pt-5 pb-2">

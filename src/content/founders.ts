@@ -8,6 +8,8 @@ export type Founder = {
   role: string;
   /** Initials shown on the gradient placeholder until a real photo exists. */
   initials: string;
+  /** Real headshot in /public; falls back to the initials placeholder if absent. */
+  photo?: string;
   bio: string;
   /** Real LinkedIn profile URL. */
   linkedin: string;
@@ -32,6 +34,7 @@ export const founders: Founder[] = [
     name: "Azhan Saeed",
     role: "Co-Founder, Partnerships",
     initials: "AS",
+    photo: "/azhan.jpeg",
     bio: "Leads client relationships — usually your first point of contact.",
     linkedin: "https://www.linkedin.com/in/azhan-codebricks/",
   },
