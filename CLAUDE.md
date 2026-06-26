@@ -68,7 +68,7 @@ Motion identity (keep consistent everywhere):
 - [✅] 7. Founders — 3 cards (photo slot, name, role, one line, LinkedIn)
 - [ ] 8. Contact + Footer — form, email, LinkedIn, GDPR checkbox; footer with no "Inc"
 - [ ] Case-study detail template — `/work/[slug]`, data-driven
-- [ ] /work index page
+- [✅] /work index page
 - [ ] Legal/utility — `/privacy`, `/terms`, `not-found.tsx`
 - [ ] Form handler — `api/contact/route.ts` (Resend or Formspree)
 - [ ] SEO baseline — metadata, OG image, sitemap, Organization schema
