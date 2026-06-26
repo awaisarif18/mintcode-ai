@@ -136,7 +136,7 @@ export default async function CaseStudyPage({
               }}
             />
             <span className="relative rounded-[7px] px-[13px] py-[7px] font-mono text-[13px] tracking-[0.08em] text-muted [background:color-mix(in_oklab,var(--void),transparent_50%)]">
-              // primary product shot — {study.name} dashboard
+              {`// primary product shot — ${study.name} dashboard`}
             </span>
           </div>
         </div>

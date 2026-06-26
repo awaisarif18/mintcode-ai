@@ -37,7 +37,7 @@ function PublishedCard({ study, number }: { study: CaseStudy; number: string }) 
         />
         <span className={cornerNumber}>{number}</span>
         <span className="relative rounded-[6px] px-[11px] py-[5px] font-mono text-[12px] tracking-[0.08em] text-muted [background:color-mix(in_oklab,var(--void),transparent_50%)]">
-          // product shot — {study.name}
+          {`// product shot — ${study.name}`}
         </span>
       </div>
 
@@ -99,7 +99,7 @@ function InProgressCard({
         </span>
         <span className={cornerNumber}>{number}</span>
         <span className="relative font-mono text-[12px] tracking-[0.08em] text-muted">
-          // screenshot — to come
+          {"// screenshot — to come"}
         </span>
       </div>
 

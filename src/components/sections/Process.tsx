@@ -34,6 +34,10 @@ export default function Process() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
     if (reduced || !("IntersectionObserver" in window)) {
+      // One-shot, browser-capability-gated state we can't derive at render time
+      // without an SSR hydration mismatch (no `window` on the server). It can't
+      // cascade (guarded early-return), so the rule's concern doesn't apply.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDrawn(true);
       setLit(processSteps.map(() => true));
       return;

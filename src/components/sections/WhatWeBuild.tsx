@@ -15,10 +15,26 @@ const spanClass: Record<number, string> = {
   6: "min-[880px]:col-span-6",
 };
 
-export default function WhatWeBuild() {
-  // Per-row stagger: column index that resets each time a row (6 cols) fills.
+// Per-row stagger index for each card: the column position that resets every
+// time a row (6 cols) fills. Computed up front so the render map stays pure.
+function rowStaggers(spans: number[]): number[] {
+  const staggers: number[] = [];
   let fill = 0;
   let col = 0;
+  for (const span of spans) {
+    if (fill + span > 6) {
+      fill = 0;
+      col = 0;
+    }
+    staggers.push(col);
+    fill += span;
+    col += 1;
+  }
+  return staggers;
+}
+
+export default function WhatWeBuild() {
+  const staggers = rowStaggers(services.map((s) => s.span));
 
   return (
     <section
@@ -34,25 +50,15 @@ export default function WhatWeBuild() {
         </RevealOnScroll>
 
         <div className="grid grid-cols-1 gap-[18px] min-[880px]:grid-cols-6">
-          {services.map((service) => {
-            if (fill + service.span > 6) {
-              fill = 0;
-              col = 0;
-            }
-            const stagger = col;
-            fill += service.span;
-            col += 1;
-
-            return (
-              <RevealOnScroll
-                key={service.number}
-                index={stagger}
-                className={spanClass[service.span]}
-              >
-                <Card {...service} />
-              </RevealOnScroll>
-            );
-          })}
+          {services.map((service, i) => (
+            <RevealOnScroll
+              key={service.number}
+              index={staggers[i]}
+              className={spanClass[service.span]}
+            >
+              <Card {...service} />
+            </RevealOnScroll>
+          ))}
         </div>
       </div>
     </section>

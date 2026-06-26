@@ -29,7 +29,7 @@ export default function Footer() {
                 }}
               />
               <span className="text-[17px] font-semibold tracking-[-0.025em] text-paper">
-                MintCode
+                Mint Code
               </span>
             </Link>
             <p className="mt-4 text-[14.5px] leading-[1.6] text-pretty text-slate">

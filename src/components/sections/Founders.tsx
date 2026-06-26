@@ -50,7 +50,7 @@ export default function Founders() {
                         {founder.initials}
                       </span>
                       <span className="absolute bottom-3 left-[13px] font-mono text-[11px] tracking-[0.08em] text-muted">
-                        // real photo
+                        {"// real photo"}
                       </span>
                     </>
                   )}

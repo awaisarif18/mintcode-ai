@@ -60,7 +60,7 @@ export default function Nav() {
             }}
           />
           <span className="text-[17px] font-semibold tracking-[-0.025em] text-paper">
-            MintCode AI
+            Mint Code
           </span>
         </a>
 
