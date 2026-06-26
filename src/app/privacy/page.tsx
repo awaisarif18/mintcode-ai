@@ -131,7 +131,7 @@ export default function PrivacyPage() {
             <ul className="flex flex-col gap-2 pl-5 [&>li]:list-disc [&>li]:marker:text-mint">
               <li>
                 An email / form-delivery provider{" "}
-                {/* REVIEW: name the processor, e.g. Resend / Formspree */}
+                {/* REVIEW: confirm the processor — Formspree (formspree.io) handles form delivery */}
               </li>
               <li>
                 Our website hosting provider{" "}

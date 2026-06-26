@@ -70,7 +70,7 @@ Motion identity (keep consistent everywhere):
 - [✅] Case-study detail template — `/work/[slug]`, data-driven
 - [✅] /work index page
 - [✅] Legal/utility — `/privacy`, `/terms`, `not-found.tsx`
-- [✅] Form handler — `api/contact/route.ts` (Resend; honeypot + consent validation)
+- [✅] Form handler — form POSTs directly to Formspree (`NEXT_PUBLIC_FORMSPREE_ENDPOINT`); `_gotcha` honeypot + consent-gated submit
 - [✅] SEO baseline — metadata (template + OG/Twitter), sitemap, robots, Organization JSON-LD; placeholder public/og.png
 
 # src/lib not created; Hero uses inline buildIn delays, not a shared hook

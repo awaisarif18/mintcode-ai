@@ -1,15 +1,18 @@
 "use client";
 
-// Contact form — the elevated card on the right of the Contact section. Posts to
-// /api/contact with idle/submitting/success/error states; submit stays disabled
-// until the GDPR consent box is checked; a hidden honeypot ("website") drops bots
-// server-side. This file owns the card styling so both the form and the success
-// panel render inside the same designed card (see design-reference/hero.html).
+// Contact form — the elevated card on the right of the Contact section. Posts
+// directly to Formspree (NEXT_PUBLIC_FORMSPREE_ENDPOINT) with idle/submitting/
+// success/error states; submit stays disabled until the GDPR consent box is
+// checked; a hidden "_gotcha" field is Formspree's built-in spam trap. This file
+// owns the card styling so both the form and the success panel render inside the
+// same designed card (see design-reference/hero.html).
 
 import { useState } from "react";
 import Link from "next/link";
 
 type Status = "idle" | "submitting" | "success" | "error";
+
+const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
 
 const cardBase =
   "rounded-[16px] border border-line bg-surface p-[clamp(22px,2.6vw,34px)] [box-shadow:0_36px_90px_-44px_color-mix(in_oklab,var(--mint),transparent_50%)]";
@@ -27,32 +30,26 @@ export default function ContactForm() {
     e.preventDefault();
     if (!consent || status === "submitting") return;
 
+    if (!FORMSPREE_ENDPOINT) {
+      setError("Form is not configured. Please email us instead.");
+      setStatus("error");
+      return;
+    }
+
     setStatus("submitting");
     setError("");
 
     const form = e.currentTarget;
     const data = new FormData(form);
-    const payload = {
-      name: String(data.get("name") ?? ""),
-      email: String(data.get("email") ?? ""),
-      company: String(data.get("company") ?? ""),
-      message: String(data.get("message") ?? ""),
-      budget: String(data.get("budget") ?? ""),
-      consent,
-      website: String(data.get("website") ?? ""), // honeypot
-    };
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: { Accept: "application/json" },
+        body: data,
       });
-      const json = await res.json().catch(() => ({}));
-      if (!res.ok || !json.ok) {
-        setError(
-          json.error ?? "Something went wrong. Please try again or email us.",
-        );
+      if (!res.ok) {
+        setError("Something went wrong. Please try again or email us.");
         setStatus("error");
         return;
       }
@@ -93,11 +90,12 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className={`flex flex-col gap-4 ${cardBase}`}>
-      {/* Honeypot — visually hidden, off the tab order, ignored by humans. */}
+      {/* Honeypot — Formspree's built-in "_gotcha" spam trap. Hidden from humans
+          and off the tab order; bots that fill it are dropped by Formspree. */}
       <div aria-hidden className="absolute h-0 w-0 overflow-hidden">
         <label>
           Leave this field empty
-          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+          <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
 
