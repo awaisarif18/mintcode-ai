@@ -61,7 +61,7 @@ Motion identity (keep consistent everywhere):
 - [✅] Nav — sticky, transparent → blur/border on scroll
 - [✅] 1. Hero — headline "Work directly with the engineers building your product." (build from hero.html reference)
 - [✅] 2. Trust strip — factual tech + "senior-led", no fake logos
-- [ ] 3. What We Build — 6 service cards
+- [✅] 3. What We Build — 6 service cards
 - [ ] 4. Why MintCode — 6 cards, "Direct founder & engineer access" first & emphasized
 - [ ] 5. Process — 7-step timeline with draw-on mint line
 - [ ] 6. Featured Work — 2 real studies (TradeSync Pro, Chronic Pain Free); layout grows to 4
