@@ -30,7 +30,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const defaultTitle =
-  "MintCode — Work directly with the engineers building your product";
+  "MintCode - Work directly with the engineers building your product";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: defaultTitle,
     description: siteDescription,
     images: [
-      { url: ogImage, width: 1200, height: 630, alt: "MintCode" },
+      { url: ogImage, width: 1200, height: 630, alt: siteName },
     ],
   },
   twitter: {
