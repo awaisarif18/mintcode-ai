@@ -9,6 +9,15 @@ export type TimelinePhase = {
   duration: string;
 };
 
+export type CaseMeta = {
+  /** e.g. "Copy-trading platform" */
+  type: string;
+  /** e.g. "In production" */
+  status: string;
+  /** One-line headline result, shown in mint. */
+  headline: string;
+};
+
 export type CaseStudy = {
   slug: string;
   name: string;
@@ -23,10 +32,14 @@ export type CaseStudy = {
   result?: string;
 
   // Detail page (published only) ------------------------------------------
+  /** Hero meta row: type / status / headline result. */
+  meta?: CaseMeta;
   /** The problem the client faced. */
   challenge?: string;
-  /** What we built and the key decisions. */
+  /** What we built. */
   solution?: string;
+  /** Key architectural/product decisions, shown under the solution. */
+  keyDecisions?: string[];
   /** Real, verifiable outcomes only. */
   results?: string[];
   /** Full tech stack for the detail page. */
@@ -44,10 +57,21 @@ export const caseStudies: CaseStudy[] = [
     tech: ["Next.js", "NestJS", "Python", "Microservices"],
     result:
       "Eliminated manual position-sizing errors at near-zero infrastructure cost.",
+    meta: {
+      type: "Copy-trading platform",
+      status: "In production",
+      headline: "Eliminated manual position-sizing errors",
+    },
     challenge:
       "The MT5 copy-trading sizing problem: mirroring a master account's trades across many follower accounts in real time, where each account has a different balance, leverage and risk — so the correct position size differs for every one. Doing that sizing by hand is slow and error-prone, and off-the-shelf copiers are expensive or infrastructure-heavy.",
     solution:
       "A three-layer microservices system. Lightweight Python desktop clients on each MT5 terminal stream trade events; a NestJS backend calculates the correct per-account position size and propagates trades in real time; and a Next.js dashboard handles control and monitoring. Sizing is now automatic and deterministic, architected to run lean.",
+    keyDecisions: [
+      "Desktop clients on each terminal to work within MT5's constraints, instead of fighting broker API limits.",
+      "Event-driven microservices, so one account's issue never cascades to the rest.",
+      "PostgreSQL as the single source of truth for every position and a full audit trail.",
+      "Stateless services on AWS to keep the platform cheap to run at near-zero idle cost.",
+    ],
     results: [
       "Eliminated manual position-sizing errors",
       "Near-zero infrastructure cost",

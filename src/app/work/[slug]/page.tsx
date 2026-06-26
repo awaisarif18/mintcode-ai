@@ -81,6 +81,39 @@ export default async function CaseStudyPage({
             {study.descriptor}
           </p>
 
+          {/* Meta row — type / status / headline result */}
+          {study.meta && (
+            <div
+              className="mt-[30px] flex flex-wrap gap-x-9 gap-y-3"
+              style={{ animation: `buildIn 0.85s ${EASE} 0.34s both` }}
+            >
+              <div className="flex flex-col gap-[5px]">
+                <span className="font-mono text-[10.5px] tracking-[0.14em] text-muted">
+                  TYPE
+                </span>
+                <span className="text-[15px] text-paper">
+                  {study.meta.type}
+                </span>
+              </div>
+              <div className="flex flex-col gap-[5px]">
+                <span className="font-mono text-[10.5px] tracking-[0.14em] text-muted">
+                  STATUS
+                </span>
+                <span className="text-[15px] text-paper">
+                  {study.meta.status}
+                </span>
+              </div>
+              <div className="flex flex-col gap-[5px]">
+                <span className="font-mono text-[10.5px] tracking-[0.14em] text-muted">
+                  HEADLINE RESULT
+                </span>
+                <span className="text-[15px] font-medium text-mint">
+                  {study.meta.headline}
+                </span>
+              </div>
+            </div>
+          )}
+
           {/* Primary product shot — placeholder */}
           <div
             className="relative mt-[clamp(36px,5vh,56px)] flex aspect-[16/9] items-center justify-center overflow-hidden rounded-[16px] border border-line"
@@ -132,9 +165,31 @@ export default async function CaseStudyPage({
                 What we built
               </h2>
             </div>
-            <p className="max-w-[640px] text-[clamp(16px,1.3vw,18.5px)] leading-[1.62] text-pretty text-slate">
-              {study.solution}
-            </p>
+            <div className="max-w-[640px]">
+              <p className="text-[clamp(16px,1.3vw,18.5px)] leading-[1.62] text-pretty text-slate">
+                {study.solution}
+              </p>
+              {study.keyDecisions && (
+                <div className="mt-[26px]">
+                  <div className="mb-3 font-mono text-[11px] tracking-[0.14em] text-muted">
+                    KEY DECISIONS
+                  </div>
+                  {study.keyDecisions.map((decision) => (
+                    <div
+                      key={decision}
+                      className="flex gap-[13px] border-t border-line py-[13px] last:border-b"
+                    >
+                      <span aria-hidden className="text-mint">
+                        →
+                      </span>
+                      <p className="text-[15.5px] leading-[1.5] text-paper">
+                        {decision}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </RevealOnScroll>
         </section>
       )}
