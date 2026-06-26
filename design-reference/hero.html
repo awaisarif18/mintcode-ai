@@ -33,6 +33,8 @@
     [data-proc-row] > [data-step] > [data-tb] { margin-top: 0 !important; }
     [data-proc-rail], [data-proc-fill] { left: 8px !important; right: auto !important; top: 9px !important; bottom: 9px !important; width: 2px !important; height: auto !important; }
     [data-proc-fill] { transform: scaleY(var(--draw, 0)) !important; transform-origin: top center !important; }
+    [data-contact-grid] { grid-template-columns: 1fr !important; }
+    [data-footer-row] { flex-direction: column !important; align-items: flex-start !important; gap: 22px !important; }
   }
   [data-work-card] { transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.45s cubic-bezier(0.16,1,0.3,1), background 0.4s ease; }
   [data-work-card]:hover { border-color: color-mix(in oklab, var(--accent), transparent 48%); background: #16241D; box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent), transparent 64%), 0 46px 100px -46px color-mix(in oklab, var(--accent), transparent 40%); transform: translateY(-6px); }
@@ -351,7 +353,7 @@
       <div style="display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));">
 
         <div data-reveal="" style="display: flex;">
-          <a data-work-card="" href="work/tradesync-pro.html" style="flex: 1 1 auto; min-width: 0; background: #121C17; border: 1px solid #1E2D26; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; color: inherit; text-decoration: none;">
+          <a data-work-card="" href="work/tradesync-pro.dc.html" style="flex: 1 1 auto; min-width: 0; background: #121C17; border: 1px solid #1E2D26; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; color: inherit; text-decoration: none;">
             <div data-media="" style="position: relative; aspect-ratio: 16 / 10; border-radius: 11px; overflow: hidden; border: 1px solid #1E2D26; background: repeating-linear-gradient(135deg, #16241D, #16241D 9px, #121C17 9px, #121C17 18px); display: flex; align-items: center; justify-content: center;">
               <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 42%, color-mix(in oklab, var(--accent), transparent 86%), transparent 60%);"></div>
               <span style="position: absolute; top: 13px; right: 15px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.1em; color: #5E726A;">01</span>
@@ -458,6 +460,89 @@
       </div>
     </div>
   </section>
+
+  <section id="call" style="position: relative; z-index: 1; background: #070C0A; padding: clamp(74px, 11vh, 124px) clamp(20px, 4vw, 40px); overflow: hidden;">
+    <div style="position: absolute; left: 50%; top: -10%; width: 980px; height: 620px; max-width: 96vw; transform: translateX(-50%); pointer-events: none; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--accent), transparent 88%), transparent 64%); filter: blur(36px);"></div>
+    <div data-contact-grid="" style="position: relative; max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 64px); align-items: start;">
+
+      <div data-reveal="">
+        <div style="display: flex; align-items: center; gap: 11px;">
+          <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: livePulse 2.6s cubic-bezier(0.16,1,0.3,1) infinite; box-shadow: 0 0 10px var(--accent);"></span>
+          <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; color: var(--accent); font-size: 12.5px; letter-spacing: 0.18em;">// LET'S TALK</span>
+        </div>
+        <h2 style="margin: 20px 0 0; font-weight: 600; font-size: clamp(34px, 4.4vw, 60px); line-height: 1.02; letter-spacing: -0.035em; color: #EAF2EC; text-wrap: balance;">Tell us what you're building.</h2>
+        <p style="margin: 22px 0 0; max-width: 460px; font-size: clamp(16px, 1.3vw, 18px); line-height: 1.6; color: #8DA197; text-wrap: pretty;">A short note is enough. You'll hear back from a founder — not a sales pipeline.</p>
+
+        <div style="margin-top: 34px; display: flex; flex-direction: column; gap: 14px;">
+          <a href="mailto:hello@mintcode.dev" style="display: inline-flex; align-items: center; gap: 11px; font-size: 16px; color: #EAF2EC; text-decoration: none;" style-hover="color: #19D98C;"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; color: #5E726A; width: 76px;">EMAIL</span>hello@mintcode.dev</a>
+          <a href="#" style="display: inline-flex; align-items: center; gap: 11px; font-size: 16px; color: #EAF2EC; text-decoration: none;" style-hover="color: #19D98C;"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; color: #5E726A; width: 76px;">LINKEDIN</span>linkedin.com/company/mintcode ↗</a>
+          <div style="display: inline-flex; align-items: center; gap: 11px; font-size: 13.5px; color: #5E726A;"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; color: #5E726A; width: 76px;">CALL</span><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; letter-spacing: 0.03em;">Calendly booking link coming here soon</span></div>
+        </div>
+      </div>
+
+      <div data-reveal="" style="background: #121C17; border: 1px solid #1E2D26; border-radius: 16px; padding: clamp(22px, 2.6vw, 34px); box-shadow: 0 36px 90px -44px color-mix(in oklab, var(--accent), transparent 50%);">
+        <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ onSubmit }}" style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+              <label style="display: flex; flex-direction: column; gap: 7px;"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.12em; color: #5E726A;">NAME</span><input type="text" required="required" placeholder="Your name" style="background: #0D1411; border: 1px solid #1E2D26; border-radius: 10px; padding: 12px 13px; color: #EAF2EC; font-size: 15px; font-family: inherit; outline: none; transition: border-color 0.25s ease;" style-focus="border-color: #19D98C;" /></label>
+              <label style="display: flex; flex-direction: column; gap: 7px;"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.12em; color: #5E726A;">EMAIL</span><input type="email" required="required" placeholder="you@company.com" style="background: #0D1411; border: 1px solid #1E2D26; border-radius: 10px; padding: 12px 13px; color: #EAF2EC; font-size: 15px; font-family: inherit; outline: none; transition: border-color 0.25s ease;" style-focus="border-color: #19D98C;" /></label>
+            </div>
+            <label style="display: flex; flex-direction: column; gap: 7px;"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.12em; color: #5E726A;">COMPANY</span><input type="text" placeholder="Company or project" style="background: #0D1411; border: 1px solid #1E2D26; border-radius: 10px; padding: 12px 13px; color: #EAF2EC; font-size: 15px; font-family: inherit; outline: none; transition: border-color 0.25s ease;" style-focus="border-color: #19D98C;" /></label>
+            <label style="display: flex; flex-direction: column; gap: 7px;"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.12em; color: #5E726A;">WHAT ARE YOU BUILDING?</span><textarea required="required" rows="3" placeholder="A sentence or two about the product." style="background: #0D1411; border: 1px solid #1E2D26; border-radius: 10px; padding: 12px 13px; color: #EAF2EC; font-size: 15px; font-family: inherit; line-height: 1.5; resize: vertical; outline: none; transition: border-color 0.25s ease;" style-focus="border-color: #19D98C;"></textarea></label>
+            <label style="display: flex; flex-direction: column; gap: 7px;"><span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.12em; color: #5E726A;">BUDGET / TIMELINE <span style="color: #3a4943;">(optional)</span></span><input type="text" placeholder="e.g. ~$30k · launch in Q4" style="background: #0D1411; border: 1px solid #1E2D26; border-radius: 10px; padding: 12px 13px; color: #EAF2EC; font-size: 15px; font-family: inherit; outline: none; transition: border-color 0.25s ease;" style-focus="border-color: #19D98C;" /></label>
+            <label style="display: flex; align-items: flex-start; gap: 11px; cursor: pointer; margin-top: 2px;"><input type="checkbox" required="required" style="margin-top: 3px; width: 16px; height: 16px; accent-color: #19D98C; flex: none;" /><span style="font-size: 13px; line-height: 1.5; color: #8DA197;">I consent to MintCode storing the details I've submitted so they can respond to my enquiry, in line with their <a href="#privacy" style="color: #19D98C; text-decoration: none;" style-hover="text-decoration: underline;">Privacy Policy</a> (GDPR).</span></label>
+            <button type="submit" style="margin-top: 6px; background: var(--accent); color: #070C0A; font-weight: 600; font-size: 16px; letter-spacing: -0.01em; padding: 15px 22px; border: none; border-radius: 11px; cursor: pointer; font-family: inherit; transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.2s ease;" style-hover="box-shadow: 0 14px 40px -12px color-mix(in oklab, var(--accent), transparent 42%); transform: translateY(-2px);" style-active="background: #0E8A63; transform: translateY(0);">Book a Discovery Call</button>
+          </form>
+        </sc-if>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px 4px; min-height: 320px; justify-content: center;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; background: color-mix(in oklab, var(--accent), transparent 80%); color: var(--accent); font-size: 22px; animation: nodePulse 1.1s ease-out 1;">✓</span>
+            <h3 style="margin: 0; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; color: #EAF2EC;">Message sent.</h3>
+            <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: #8DA197; max-width: 360px;">Thanks — a founder will read this and get back to you directly. No account managers in between.</p>
+            <div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; color: #5E726A; display: inline-flex; align-items: center; gap: 9px;"><span style="color: var(--accent);">›</span>you ↔ senior engineer</div>
+          </div>
+        </sc-if>
+      </div>
+
+    </div>
+  </section>
+
+  <footer style="position: relative; z-index: 1; background: #070C0A; border-top: 1px solid #1E2D26; padding: clamp(48px, 7vh, 76px) clamp(20px, 4vw, 40px) 40px;">
+    <div style="max-width: 1240px; margin: 0 auto;">
+      <div data-footer-row="" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
+        <div style="max-width: 320px;">
+          <div style="display: flex; align-items: center; gap: 11px;">
+            <span style="width: 22px; height: 22px; border-radius: 6px; background: linear-gradient(140deg, var(--accent), #0E8A63); box-shadow: 0 0 16px -2px color-mix(in oklab, var(--accent), transparent 50%), inset 0 0 0 1px rgba(255,255,255,0.12);"></span>
+            <span style="font-weight: 600; font-size: 17px; letter-spacing: -0.025em; color: #EAF2EC;">MintCode</span>
+          </div>
+          <p style="margin: 16px 0 0; font-size: 14.5px; line-height: 1.6; color: #8DA197; text-wrap: pretty;">A senior-led product engineering studio. You work directly with the engineers building your product.</p>
+        </div>
+
+        <div style="display: flex; gap: clamp(32px, 5vw, 72px); flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.14em; color: #5E726A;">EXPLORE</span>
+            <a href="#work-featured" style="font-size: 14.5px; color: #8DA197; text-decoration: none;" style-hover="color: #EAF2EC;">Work</a>
+            <a href="#process" style="font-size: 14.5px; color: #8DA197; text-decoration: none;" style-hover="color: #EAF2EC;">Process</a>
+            <a href="#founders" style="font-size: 14.5px; color: #8DA197; text-decoration: none;" style-hover="color: #EAF2EC;">Founders</a>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.14em; color: #5E726A;">CONNECT</span>
+            <a href="mailto:hello@mintcode.dev" style="font-size: 14.5px; color: #8DA197; text-decoration: none;" style-hover="color: #EAF2EC;">hello@mintcode.dev</a>
+            <a href="#" style="font-size: 14.5px; color: #8DA197; text-decoration: none;" style-hover="color: #EAF2EC;">LinkedIn ↗</a>
+            <a href="#call" style="font-size: 14.5px; color: #8DA197; text-decoration: none;" style-hover="color: #EAF2EC;">Start a project</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: clamp(40px, 6vh, 64px); padding-top: 26px; border-top: 1px solid #1E2D26; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;">
+        <span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.03em; color: #5E726A;">© 2026 MintCode · Remote-first across the Gulf, UK &amp; US</span>
+        <div style="display: flex; gap: 22px;">
+          <a href="#privacy" style="font-size: 13px; color: #5E726A; text-decoration: none;" style-hover="color: #8DA197;">Privacy</a>
+          <a href="#terms" style="font-size: 13px; color: #5E726A; text-decoration: none;" style-hover="color: #8DA197;">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{
@@ -636,6 +721,9 @@ class Component extends DCLogic {
       rows,
       done,
       trust: this.TRUST.map(x => ({ t: x.t, chip: x.chip, chipFalse: !x.chip })),
+      sent: this.state.sent,
+      formOpen: !this.state.sent,
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
     };
   }
 }
