@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 const links = [
   { href: "#work", label: "Work" },
   { href: "#process", label: "Process" },
-  { href: "#founders", label: "Founders" },
 ];
 
 export default function Nav() {

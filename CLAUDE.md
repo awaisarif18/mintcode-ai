@@ -9,7 +9,7 @@ Marketing website for **MintCode**, a senior-led **product engineering studio** 
 - **Next.js (App Router) + TypeScript + Tailwind CSS.**
 - React Server Components by default. Add `"use client"` only on components that need animation, scroll listeners, or interactivity (Hero, Process, anything with reveal/hover logic).
 - **Styling:** Tailwind utilities + design tokens defined as CSS variables in `src/app/globals.css`. Use the tokens — never hardcode raw hex in components.
-- **Copy lives in `src/content/*`** as typed data (`services.ts`, `reasons.ts`, `process.ts`, `founders.ts`, `caseStudies.ts`). Section components render from that data. Case studies are fully data-driven so adding studies 3–4 later is just adding data, no new components.
+- **Copy lives in `src/content/*`** as typed data (`services.ts`, `reasons.ts`, `process.ts`, `caseStudies.ts`). Section components render from that data. Case studies are fully data-driven so adding studies 3–4 later is just adding data, no new components.
 - **Animation:** prefer CSS keyframes + the Web Animations API + a small `RevealOnScroll` hook in `src/lib`. No heavy animation libraries unless I ask. **Always honor `prefers-reduced-motion`.**
 - Keep components small and composable across `components/layout`, `components/sections`, `components/ui`.
 - Accessibility: WCAG AA. Semantic HTML, focus states, alt text. Mobile-first — Gulf/US buyers browse on phones.
@@ -51,7 +51,7 @@ Motion identity (keep consistent everywhere):
 **Full section copy:** `design-reference/MintCode-Design-Prompts.md` contains the exact, approved copy for every section. Pull text from there.
 
 ## Honesty guardrails — hard rules, never violate
-- **Only three founders appear anywhere on the site:** Muhammad Awais Arif (CEO & Founder), Huzaifa Shahid (Co-Founder, Engineering), Azhan Saeed (Co-Founder, Partnerships). Do NOT add any other named person, role, photo, or experience hint — not in copy, not in placeholder data, not in comments.
+- Founder profiles are intentionally omitted from the public site. Keep the general founder-led messaging, but add no founder cards, names, photos, or individual LinkedIn links unless requested.
 - **No fabricated testimonials, client names, logos, or metrics.** For any real content not yet provided, use a clearly-labeled placeholder (e.g. `{/* TODO: real metric from client */}`) — never invent it.
 - **No "Inc" or any corporate suffix** — not incorporated yet.
 - Do not describe the specialist bench as full-time staff; it's an on-call network.
@@ -65,8 +65,7 @@ Motion identity (keep consistent everywhere):
 - [✅] 4. Why MintCode — 6 cards, "Direct founder & engineer access" first & emphasized
 - [✅] 5. Process — 7-step timeline with draw-on mint line
 - [✅] 6. Featured Work — 2 real studies (TradeSync Pro, Chronic Pain Free); layout grows to 4
-- [✅] 7. Founders — 3 cards (photo slot, name, role, one line, LinkedIn)
-- [✅] 8. Contact + Footer — designed two-column section + footer, wired form preserved (POST, honeypot, consent gate, states)
+- [✅] 7. Contact + Footer — designed two-column section + footer, wired form preserved (POST, honeypot, consent gate, states)
 - [✅] Case-study detail template — `/work/[slug]`, data-driven
 - [✅] /work index page
 - [✅] Legal/utility — `/privacy`, `/terms`, `not-found.tsx`

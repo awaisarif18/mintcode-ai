@@ -9,7 +9,6 @@ import { contactEmail, companyLinkedIn } from "@/lib/site";
 const exploreLinks = [
   { href: "/#work-featured", label: "Work" },
   { href: "/#process", label: "Process" },
-  { href: "/#founders", label: "Founders" },
 ];
 
 export default function Footer() {
