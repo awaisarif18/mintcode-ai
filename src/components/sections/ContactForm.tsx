@@ -89,7 +89,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className={`flex flex-col gap-4 ${cardBase}`}>
+    <form onSubmit={handleSubmit} className={`flex flex-col gap-4 ${cardBase}`}>
       {/* Honeypot — Formspree's built-in "_gotcha" spam trap. Hidden from humans
           and off the tab order; bots that fill it are dropped by Formspree. */}
       <div aria-hidden className="absolute h-0 w-0 overflow-hidden">
@@ -162,6 +162,7 @@ export default function ContactForm() {
         <input
           type="checkbox"
           name="consent"
+          required
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
           className="mt-[3px] h-4 w-4 flex-none accent-mint"
