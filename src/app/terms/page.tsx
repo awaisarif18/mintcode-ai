@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Footer from "@/components/layout/Footer";
+import { contactEmail } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -141,10 +142,10 @@ export default function TermsPage() {
             <p>
               Questions about these terms? Email us at{" "}
               <a
-                href="mailto:hello@mintcode.dev"
+                href={`mailto:${contactEmail}`}
                 className="text-mint underline-offset-4 hover:underline"
               >
-                hello@mintcode.dev
+                {contactEmail}
               </a>
               {/* REVIEW: real contact email + legal entity details */}.
             </p>
